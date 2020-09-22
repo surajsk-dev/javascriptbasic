@@ -16,20 +16,25 @@
 </head>
 <body>
     <button id="btnCounter">+</button>
+    <input type="text">
 
     <script>
+        //take a number which starts from zero
+        let counter=0;
+
+        //  function to increment number
+        function counterIncrement(){
+            //every click increment a number
+            counter=counter+1;
+            console.log(counter)
+        }
+
         //get button element
          const element = document.querySelector("#btnCounter")
-        // console.log(element)
  
          //listen to click event
+         element.addEventListener("click", counterIncrement, false)
  
-         //take a number which starts from zero
-         let counter=0;
- 
-         //every click increment a number
-         counter=counter+1;
-         
      </script>
 </body>
 </html>
