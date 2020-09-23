@@ -38,8 +38,15 @@
         // set heading element to totalExpense
         headingEl.textContent = totalExpense;
 
+        // allExpenses at one place
+        const allExpenses=[];
+
         // onButtonClick add inputAmount to totalExpense
         function addExpenseToTotal(){
+            
+            // expense object
+            const expenseItem={};
+
             // read value from inputAmount
             const textAmount = inputElement.value;
 
@@ -48,6 +55,16 @@
            
             // convert it to number
             const expense = parseInt(textAmount,10)
+
+            // put it in object
+            expenseItem.desc=textDesc;
+            expenseItem.amount=expense;
+
+            allExpenses.push(expenseItem)
+
+            console.clear()
+            console.table(allExpenses)
+            
             
             // add that value to totalExpense
             totalExpense = totalExpense + expense;
