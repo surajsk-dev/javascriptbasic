@@ -139,12 +139,7 @@
 
             // show table here with lambda function 
         
-            const allExpenseHTML=allExpenses.map(expense =>
-                 createListItem(expense)   
-            )
-
-            const joinedAllExpenseHTML = allExpenseHTML.join("")
-            expenseTableEl.innerHTML=joinedAllExpenseHTML;
+            renderList(allExpenses);
 
         }
             
@@ -169,17 +164,36 @@
 
         // delete item
         function deleteItem(dateValue){
-            console.log("delete item was called", dateValue);
+            // const newArr=[];
+            // using for loop
+            // for(let i=0;i<allExpenses.length;i++){
+            //     if(allExpenses[i].moment.valueOf() !== dateValue){
+            //      newArr.push(allExpenses[i]);
+            //     }
 
-            for(let i=0;i<allExpenses.length;i++){
-                if(allExpenses[i].moment.valueOf()===dateValue){
-                    console.log('item-found',allExpenses[i])
-                }
+            // }
 
-            }
+            // without for loop
+            // const newArr = allExpenses.filter((expense)=>{
+            //     if(expense.moment.valueOf() !== dateValue){
+            //         return expense
+            //     }
+            // })
+            const newArr=allExpenses    
+                            .filter(expense => expense.moment.valueOf() !== dateValue);
+            renderList(newArr);
+            
         }
 
+        // view layer
+        function renderList(arrOfList){
+            const allExpenseHTML=arrOfList.map(expense =>
+                 createListItem(expense));
+            const joinedAllExpenseHTML = allExpenseHTML.join("");
+            expenseTableEl.innerHTML=joinedAllExpenseHTML;
 
+            
+        }
         // view layer is here for list item description and amount
          function createListItem({ desc, amount, moment}){
             return`
